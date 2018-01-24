@@ -359,8 +359,11 @@ render_glyphs(CTFontRef font, unsigned int width, unsigned int height, unsigned 
     if (render_ctx == NULL || gray_color_space == NULL) fatal("Out of memory");
     CGContextSetShouldAntialias(render_ctx, true);
     CGContextSetShouldSmoothFonts(render_ctx, true);
+    CGContextSetLineWidth(render_ctx, 0.5f);
+    CGContextSetShouldSubpixelQuantizeFonts(render_ctx, true);
     CGContextSetGrayFillColor(render_ctx, 1, 1); // white glyphs
-    CGContextSetTextDrawingMode(render_ctx, kCGTextFill);
+    CGContextSetGrayStrokeColor(render_ctx, 1, 1);
+    CGContextSetTextDrawingMode(render_ctx, kCGTextFillStroke);
     CGContextSetTextMatrix(render_ctx, CGAffineTransformIdentity);
     CGContextSetTextPosition(render_ctx, 0, height - baseline);
     CTFontDrawGlyphs(font, glyphs, positions, num_glyphs, render_ctx);
