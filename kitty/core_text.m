@@ -447,7 +447,7 @@ render_glyphs(CTFontRef font, unsigned int width, unsigned int height, unsigned 
 
     const CGFloat scale = 1.0 + OPT(macos_adjust_glyph_scale);
     const CGFloat ty = -(-(floorf(CTFontGetLeading(font) - floorf(CTFontGetDescent(font) + 0.5))));
-    CGContextSetTextMatrix(render_ctx, CGAffineTransformMake(scale, 0.0, 0, scale, 0, ty));
+    CGContextSetTextMatrix(render_ctx, CGAffineTransformMake(scale, 0.0, 0.0, scale, 0.0, ty));
 
     const CGFloat y_position = height - baseline + OPT(macos_adjust_glyph_y);
     const CGFloat x_position = OPT(macos_adjust_glyph_x);
